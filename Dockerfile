@@ -12,9 +12,10 @@ RUN apk --no-cache add \
         openssh-client \
         bash \
     && \
-    curl -sLo ./kustomize "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$KUSTOMIZE_VERSION/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" && \
-        chmod +x ./kustomize && \
-        mv kustomize /usr/local/bin/kustomize && \
+    curl -sLo /tmp/kustomize.tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$KUSTOMIZE_VERSION/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" && \
+        tar -zxvf /tmp/kustomize.tar.gz -C /tmp && \
+        chmod +x /tmp/kustomize && \
+        mv /tmp/kustomize /usr/local/bin/kustomize && \
     curl -sLo ./chamber "https://github.com/segmentio/chamber/releases/download/v2.3.3/chamber-${CHAMBER_VERSION}-linux-amd64" && \
         chmod +x ./chamber && \
         mv chamber /usr/local/bin/chamber && \
