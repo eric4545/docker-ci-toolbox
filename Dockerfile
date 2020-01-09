@@ -2,7 +2,7 @@ FROM alpine:3.10.1
 
 LABEL maintainer eric4545@users.noreply.github.com
 
-ENV KUSTOMIZE_VERSION 2.0.3
+ENV KUSTOMIZE_VERSION 3.5.3
 ENV CHAMBER_VERSION v2.3.3
 ENV YQ_VERSION 2.4.0
 
