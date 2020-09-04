@@ -19,7 +19,7 @@ RUN apk --no-cache add \
         tar -zxvf /tmp/kustomize.tar.gz -C /tmp && \
         chmod +x /tmp/kustomize && \
         mv /tmp/kustomize /usr/local/bin/kustomize && \
-    curl -sLo ./chamber "https://github.com/segmentio/chamber/releases/download/v2.3.3/chamber-${CHAMBER_VERSION}-linux-amd64" && \
+    curl -sLo ./chamber "https://github.com/segmentio/chamber/releases/download/${CHAMBER_VERSION}/chamber-${CHAMBER_VERSION}-linux-amd64" && \
         chmod +x ./chamber && \
         mv chamber /usr/local/bin/chamber && \
     curl -sLo ./yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64" && \
