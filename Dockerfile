@@ -2,6 +2,7 @@ FROM alpine:3.12.0
 
 LABEL maintainer eric4545@users.noreply.github.com
 
+ENV KUBEVAL_VERSION 0.15.0
 ENV KUSTOMIZE_VERSION 3.5.3
 ENV CHAMBER_VERSION v2.3.3
 ENV YQ_VERSION 3.3.2
@@ -15,10 +16,15 @@ RUN apk --no-cache add \
         python3 \
         py-pip \
     && \
-    curl -sLo /tmp/kustomize.tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$KUSTOMIZE_VERSION/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" && \
-        tar -zxvf /tmp/kustomize.tar.gz -C /tmp && \
-        chmod +x /tmp/kustomize && \
-        mv /tmp/kustomize /usr/local/bin/kustomize && \
+    cd /tmp && \
+    curl -sLo ./kustomize.tar.gz "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv$KUSTOMIZE_VERSION/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz" && \
+        tar -zxvf ./kustomize.tar.gz -C . && \
+        chmod +x ./kustomize && \
+        mv ./kustomize /usr/local/bin/kustomize && \
+    curl -sLo ./kubeval.tar.gz "https://github.com/instrumenta/kubeval/releases/download/${KUBEVAL_VERSION}/kubeval-linux-amd64.tar.gz" && \
+        tar -zxvf ./kubeval.tar.gz -C . && \
+        chmod +x ./kubeval && \
+        mv kubeval /usr/local/bin/kubeval && \
     curl -sLo ./chamber "https://github.com/segmentio/chamber/releases/download/${CHAMBER_VERSION}/chamber-${CHAMBER_VERSION}-linux-amd64" && \
         chmod +x ./chamber && \
         mv chamber /usr/local/bin/chamber && \
@@ -26,4 +32,7 @@ RUN apk --no-cache add \
         chmod +x ./yq && \
         mv yq /usr/local/bin/yq && \
     pip install --upgrade awscli==$AWS_CLI_VERSION && \
-    apk --purge del py-pip
+    apk --purge del \
+        py-pip \
+    && \
+    rm -rf /tmp/*
