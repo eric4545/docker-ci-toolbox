@@ -4,7 +4,7 @@ LABEL maintainer eric4545@users.noreply.github.com
 
 ENV KUSTOMIZE_VERSION 3.5.3
 ENV CHAMBER_VERSION v2.3.3
-ENV YQ_VERSION 2.4.0
+ENV YQ_VERSION 3.3.2
 ENV AWS_CLI_VERSION=1.16.273
 
 RUN apk --no-cache add \
