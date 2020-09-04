@@ -1,4 +1,4 @@
-FROM alpine:3.10.1
+FROM alpine:3.12.0
 
 LABEL maintainer eric4545@users.noreply.github.com
 
