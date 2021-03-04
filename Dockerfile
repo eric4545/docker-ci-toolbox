@@ -27,7 +27,7 @@ RUN apk --no-cache add \
     curl -sLo ./chamber "https://github.com/segmentio/chamber/releases/download/${CHAMBER_VERSION}/chamber-${CHAMBER_VERSION}-linux-amd64" && \
         chmod +x ./chamber && \
         mv chamber /usr/local/bin/chamber && \
-    curl -sLo ./yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64" && \
+    curl -sLo ./yq "https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/yq_linux_amd64" && \
         chmod +x ./yq && \
         mv yq /usr/local/bin/yq && \
     python3 -m ensurepip --upgrade && \
